@@ -10,9 +10,14 @@ services:
       - "8000:8000"
     tty: true
     command: python manage.py runserver 0.0.0.0:8000
+    env_file:
+      - .env/.env.common
+
     depends_on:
       - db
   db:
     build:
       context: db
       dockerfile: dockerfile
+    env_file:
+      - .env/.env.common
